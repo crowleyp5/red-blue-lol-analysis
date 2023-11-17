@@ -1,0 +1,21 @@
+For each of the feeback steps, I received feedback from Tyler, Orion, and Spencer.
+
+Part 1:
+I brainstormed a few different potential topics for exploratory data analysis. I knew I wanted to pick 
+something of particular interest to me, but I was not sure if my topics would receive the same level of 
+interest from my peers. My first idea was to analyze the difference in playstyles between red side and blue side 
+in League of Legends (think starting white vs. black in Chess). It is no secret that blue side has a higher winrate at roughly 55%, but I thought it would be 
+interesting to examine the differences in playstyles that may attribute to the higher winrate. Are their objective trades 
+more favorable? Are they earning more gold through lane minions or jungle monsters? Are they getting more kills? Do 
+they have better drafts in terms of their picks and bans? The second idea I had was to analyze experience and performance in the 
+NBA. Does more years always indicate better performance, or in what conditions does it not? Do years spent in other 
+leagues also lead improve performance? How much does minutes played matter relative to years of experience? My third idea was 
+to analyze the effect of recruiting in college football on a teams success. What positions matter the most for recruiting? Are 
+players following teams or coaches? How does a teams revenue impact its ability to recruit? After soliciting feedback, I 
+was told that the second and third ideas might appeal more to audiences generally, but the first idea was still appealing 
+enough to consider. I was told that the first idea was much more original. I was also warned that it might be difficult 
+to get data from League of Legends matches. I was told that the second idea might be too narrow in scope to perform an 
+effective analysis. After these considerations, I decided that I wanted to pursue the more original idea  on League of Legends 
+because I was not the only person interested. My related question: How do playstyles differ from red side and blue side?
+
+Part 2:
