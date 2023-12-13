@@ -19,3 +19,5 @@ effective analysis. After these considerations, I decided that I wanted to pursu
 because I was not the only person interested. My related question: How do playstyles differ from red side and blue side?
 
 Part 2:
+  In regards to my data collection blog post, Orion gave me feedback about the readability of the post. He suggested that I split up my "scraping the data" and "cleaning the data" sections into 2-3 paragraphs each to make it easier to follow along. I also mentioned that it felt a bit weird how I was abruptly stating that I would not have time to explain all the rules of the game due to their complexity, so I had to find a way to more smoothly invite the reader to learn about the game if they are not familiar with it. 
+  Jacob Fisher asked for more explanation of the game, saying that it was hard to understand what the data meant. Thus, I will have to try my best to draw parallels and explain just enough for people like him to understand without adding significant length to the post. He also said it would be good to provide a link to the site where I got the data for better reproducability.
