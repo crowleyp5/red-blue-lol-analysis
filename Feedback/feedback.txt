@@ -1,23 +1,29 @@
 For each of the feeback steps, I received feedback from Tyler, Orion, and Spencer.
 
-Part 1:
-I brainstormed a few different potential topics for exploratory data analysis. I knew I wanted to pick 
+Brainstorming Feedback:
+  I brainstormed a few different potential topics for exploratory data analysis. I knew I wanted to pick 
 something of particular interest to me, but I was not sure if my topics would receive the same level of 
 interest from my peers. My first idea was to analyze the difference in playstyles between red side and blue side 
 in League of Legends (think starting white vs. black in Chess). It is no secret that blue side has a higher winrate at roughly 55%, but I thought it would be 
 interesting to examine the differences in playstyles that may attribute to the higher winrate. Are their objective trades 
 more favorable? Are they earning more gold through lane minions or jungle monsters? Are they getting more kills? Do 
-they have better drafts in terms of their picks and bans? The second idea I had was to analyze experience and performance in the 
+they have better drafts in terms of their picks and bans?
+  The second idea I had was to analyze experience and performance in the 
 NBA. Does more years always indicate better performance, or in what conditions does it not? Do years spent in other 
-leagues also lead improve performance? How much does minutes played matter relative to years of experience? My third idea was 
-to analyze the effect of recruiting in college football on a teams success. What positions matter the most for recruiting? Are 
-players following teams or coaches? How does a teams revenue impact its ability to recruit? After soliciting feedback, I 
-was told that the second and third ideas might appeal more to audiences generally, but the first idea was still appealing 
-enough to consider. I was told that the first idea was much more original. I was also warned that it might be difficult 
-to get data from League of Legends matches. I was told that the second idea might be too narrow in scope to perform an 
-effective analysis. After these considerations, I decided that I wanted to pursue the more original idea  on League of Legends 
-because I was not the only person interested. My related question: How do playstyles differ from red side and blue side?
+leagues also lead improve performance? How much does minutes played matter relative to years of experience? 
+  My third idea was to analyze the effect of recruiting in college football on a teams success. What positions matter the most for recruiting? Are 
+players following teams or coaches? How does a teams revenue impact its ability to recruit? 
+  After soliciting feedback, I was told by all group 4 members that the second and third ideas might appeal more 
+to audiences generally, but the first idea was still appealing enough to consider. Tyler and Spencer told me that the first idea was much more original. 
+Orion and Spencer warned that it might be difficult to get data from League of Legends matches. Orion suggested that 
+the second idea might be too narrow in scope to perform an effective analysis. After these considerations, I decided 
+that I wanted to pursue the more original idea on League of Legends because Orion also seemed interested. 
+My related question: How do playstyles differ from red side and blue side?
 
-Part 2:
-  In regards to my data collection blog post, Orion gave me feedback about the readability of the post. He suggested that I split up my "scraping the data" and "cleaning the data" sections into 2-3 paragraphs each to make it easier to follow along. I also mentioned that it felt a bit weird how I was abruptly stating that I would not have time to explain all the rules of the game due to their complexity, so I had to find a way to more smoothly invite the reader to learn about the game if they are not familiar with it. 
-  Jacob Fisher asked for more explanation of the game, saying that it was hard to understand what the data meant. Thus, I will have to try my best to draw parallels and explain just enough for people like him to understand without adding significant length to the post. He also said it would be good to provide a link to the site where I got the data for better reproducability.
+Data Collection Blog Post Feedback:
+  In regards to my data collection blog post, Orion gave me feedback about the readability of the post. He suggested that I split up my "scraping the data" and "cleaning the data" sections into 2-3 paragraphs each to make it easier to follow along. I also mentioned that it felt a bit weird how I was abruptly stating that I would not have time to explain all the rules of the game due to their complexity, so I had to find a way to more smoothly inform the reader about the game if they are not familiar with it. If you look at my latest version of the post, you will find that the two sections have been split into multiple paragraphs. The first section provides much more details about the game and certain variables that are used in the data set. I believe that the changes were made in a less abrupt manner than the first draft.
+  Jacob Fisher asked for more explanation of the game, saying that it was hard to understand what the data meant. Thus, I will have to try my best to draw parallels and explain just enough for people like him to understand without adding significant length to the post. He also said it would be good to provide a link to the site where I got the data for better reproducability. As mentioned before, more details about the game are included in the first section. I described the terms creep score, dragons, turrets, barons, etc. because they are all included in the data set and are mentioned in the cleaning section.
+
+Exploratory Data Analysis Feedback:
+
+Streamlit App Feedback:
