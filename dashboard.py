@@ -43,6 +43,9 @@ def display_boxplot(data, title, role, color):
 # Display box plots and selection widgets for each role
 for role in ['Top', 'Mid', 'Bot']:
     st.header(f'CS Differential in the {role} lane (Blue - Red)')
+    st.write("""
+    Compare gold efficiency in a matchup you would like to see by selecting a champion for both sides. When you select one, the boxplot will display only games where that champion was played for the team specified.
+    """)
     role_df = lol.copy()  # Create a copy of the DataFrame for each role
 
     # Calculate CS Differential for the role
@@ -51,8 +54,8 @@ for role in ['Top', 'Mid', 'Bot']:
     blue_champions = get_top_champions(f'Blue {role}')
     red_champions = get_top_champions(f'Red {role}')
 
-    selected_blue = st.selectbox(f'Select Blue Side {role} Champion', blue_champions, key=f'blue_{role}')
-    selected_red = st.selectbox(f'Select Red Side {role} Champion', red_champions, key=f'red_{role}')
+    selected_blue = st.selectbox(f'Select Blue Side {role} Laner', blue_champions, key=f'blue_{role}')
+    selected_red = st.selectbox(f'Select Red Side {role} Laner', red_champions, key=f'red_{role}')
 
     # Apply filters based on user selection
     if selected_blue != 'Any':
@@ -93,6 +96,9 @@ dragon_data = pd.DataFrame({
 
 # Display bar chart for the number of dragons
 st.header('Dragon Control Analysis')
+st.write("""
+Junglers are responsible for securing objectives. See which junglers have the easiest time securing dragons relative to their opponents! Similarly to the boxplots, the bar chart will filter according to the champions specified.
+""")
 display_bar_chart(dragon_data, 'Total Number of Dragons Secured by Each Team')
 
 time_df = lol.copy()
@@ -115,6 +121,9 @@ def display_scatter_plot(data, x_variable, y_variable):
 
 # Display scatter plot
 st.header('Objective Timing vs Game Time')
+st.write("""
+Choose an objective (Dragon or Rift Herald). The scatterplot will show how long games last overall relative to the time taken for the first objective to be secured.
+""")
 display_scatter_plot(time_df, x_axis_variable, 'Game Time')
 
 def display_wards_plot(data, x_col, y_col, title, color):
@@ -148,6 +157,9 @@ if selected_red_support != 'Any':
 
 # Display scatter plots
 st.subheader('Blue Team Ward Analysis')
+st.write("""
+Supports tend to be the primary source of vision control. See which supports perform the best compared to their opponents!
+""")
 display_wards_plot(ward_df, 'Red Wards Placed', 'Blue Wards Destroyed', 'Blue Team Warding vs Ward Destruction', 'blue')
 
 st.subheader('Red Team Ward Analysis')
