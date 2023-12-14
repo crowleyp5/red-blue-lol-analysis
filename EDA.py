@@ -169,13 +169,11 @@ proportions_data = pd.DataFrame({
 color_scheme = ['blue', 'orange', 'purple', 'red']
 combination_order = ['Blue Dragon & Blue Herald', 'Blue Dragon & Red Herald', 'Red Dragon & Blue Herald', 'Red Dragon & Red Herald']
 
-# Create bar chart
-plt.figure(figsize=(10, 6))
-sns.barplot(x='Combination', y='Proportion', data=proportions_data, palette=color_scheme, order=combination_order)
+# Create pie chart
+plt.figure(figsize=(8, 8))
+plt.pie(proportions_data['Proportion'], labels=proportions_data['Combination'], colors=color_scheme, autopct='%1.1f%%', startangle=140)
 plt.title('Proportion of Games for Each Dragon-Herald Combination')
-plt.xlabel('First Dragon & Rift Herald Combination')
-plt.ylabel('Proportion of Games')
-plt.xticks(rotation=45)
+plt.show()
 
 # Filtering data for scatter plots
 blue_dragon_blue_herald = lol[(lol['First Dragon Team'] == 'Blue') & (lol['First Rift Herald Team'] == 'Blue')]
@@ -194,7 +192,6 @@ for ax, dataset, color, title in zip(axes.flatten(), scatter_datasets, colors, t
     ax.set_xlabel('Time of First Dragon (Minutes)')
     ax.set_ylabel('Time of First Rift Herald (Minutes)')
     ax.set_xlim(5, 17)
-    y_max = 8 + (x_max - x_min)
     ax.set_ylim(8, 15)
 
 plt.tight_layout()
