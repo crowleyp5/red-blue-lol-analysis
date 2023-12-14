@@ -44,7 +44,7 @@ def display_boxplot(data, title, role, color):
 for role in ['Top', 'Mid', 'Bot']:
     st.header(f'CS Differential in the {role} lane (Blue - Red)')
     st.write("""
-    Compare gold efficiency in a matchup you would like to see by selecting a champion for both sides. When you select one, the boxplot will display only games where that champion was played for the team specified.
+    Compare gold efficiency in a matchup you would like to see by selecting a champion for both sides. When you select one, the boxplot will display only games where that champion was played for the team specified. Positive numbers indicate an advantage for the blue side champion.
     """)
     role_df = lol.copy()  # Create a copy of the DataFrame for each role
 
