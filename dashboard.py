@@ -16,6 +16,9 @@ lol_df['Top CS Diff'] = lol_df['Blue Top CS'] - lol_df['Red Top CS']
 lol_df['Mid CS Diff'] = lol_df['Blue Mid CS'] - lol_df['Red Mid CS']
 lol_df['Bot CS Diff'] = lol_df['Blue Bot CS'] - lol_df['Red Bot CS']
 
+def get_top_champions(role):
+    return ['Any'] + list(lol[f'{role}'].value_counts().head(10).index)
+
 # Function to create and display a box plot
 def display_boxplot(data, title, role, color):
     column_name = f'{role} CS Diff'
@@ -37,8 +40,11 @@ for role in ['Top', 'Mid', 'Bot']:
     # Calculate CS Differential for the role
     role_df[f'{role} CS Diff'] = role_df[f'Blue {role} CS'] - role_df[f'Red {role} CS']
 
-    selected_blue = st.selectbox(f'Select Blue Side {role} Laner', ['Any'] + list(role_df[f'Blue {role}'].unique()), key=f'blue_{role}')
-    selected_red = st.selectbox(f'Select Red Side {role} Laner', ['Any'] + list(role_df[f'Red {role}'].unique()), key=f'red_{role}')
+    blue_champions = get_top_champions(f'Blue {role}')
+    red_champions = get_top_champions(f'Red {role}')
+
+    selected_blue = st.selectbox(f'Select Blue Side {role} Champion', blue_champions, key=f'blue_{role}')
+    selected_red = st.selectbox(f'Select Red Side {role} Champion', red_champions, key=f'red_{role}')
 
     # Apply filters based on user selection
     if selected_blue != 'Any':
@@ -50,9 +56,13 @@ for role in ['Top', 'Mid', 'Bot']:
 
 jungle_df = lol.copy()
 
-selected_blue_jungler = st.selectbox('Select Blue Side Jungler', ['Any'] + list(lol['Blue Jungle'].unique()))
-selected_red_jungler = st.selectbox('Select Red Side Jungler', ['Any'] + list(lol['Red Jungle'].unique()))
+top_blue_junglers = get_top_champions('Blue Jungle')
+top_red_junglers = get_top_champions('Red Jungle')
 
+selected_blue_jungler = st.selectbox('Select Blue Side Jungler', top_blue_junglers)
+selected_red_jungler = st.selectbox('Select Red Side Jungler', top_red_junglers)
+
+# Apply filters based on user selection
 if selected_blue_jungler != 'Any':
     jungle_df = jungle_df[jungle_df['Blue Jungle'] == selected_blue_jungler]
 if selected_red_jungler != 'Any':
@@ -116,8 +126,11 @@ ward_df = lol.copy()
 # Selection widgets for Blue and Red Support
 st.header('Ward Analysis')
 
-selected_blue_support = st.selectbox('Select Blue Side Support', ['Any'] + list(ward_df['Blue Support'].unique()), key='blue_support')
-selected_red_support = st.selectbox('Select Red Side Support', ['Any'] + list(ward_df['Red Support'].unique()), key='red_support')
+top_blue_supports = get_top_champions('Blue Support')
+top_red_supports = get_top_champions('Red Support')
+
+selected_blue_support = st.selectbox('Select Blue Side Support', top_blue_supports, key='blue_support')
+selected_red_support = st.selectbox('Select Red Side Support', top_red_supports, key='red_support')
 
 # Apply filters based on user selection
 if selected_blue_support != 'Any':
