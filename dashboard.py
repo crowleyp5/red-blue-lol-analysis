@@ -32,16 +32,21 @@ def display_boxplot(data, title, role):
 # Display box plots and selection widgets for each role
 for role in ['Top', 'Mid', 'Bot']:
     st.header(f'{role} Role CS Differential')
-    selected_blue = st.selectbox(f'Select Blue Side {role} Laner', ['Any'] + list(lol_df[f'Blue {role}'].unique()), key=f'blue_{role}')
-    selected_red = st.selectbox(f'Select Red Side {role} Laner', ['Any'] + list(lol_df[f'Red {role}'].unique()), key=f'red_{role}')
+    role_df = lol.copy()  # Create a copy of the DataFrame for each role
+
+    # Calculate CS Differential for the role
+    role_df[f'{role} CS Diff'] = role_df[f'Blue {role} CS'] - role_df[f'Red {role} CS']
+
+    selected_blue = st.selectbox(f'Select Blue Side {role} Laner', ['Any'] + list(role_df[f'Blue {role}'].unique()), key=f'blue_{role}')
+    selected_red = st.selectbox(f'Select Red Side {role} Laner', ['Any'] + list(role_df[f'Red {role}'].unique()), key=f'red_{role}')
 
     # Apply filters based on user selection
     if selected_blue != 'Any':
-        lol_df = lol_df[lol_df[f'Blue {role}'] == selected_blue]
+        role_df = role_df[role_df[f'Blue {role}'] == selected_blue]
     if selected_red != 'Any':
-        lol_df = lol_df[lol_df[f'Red {role}'] == selected_red]
+        role_df = role_df[role_df[f'Red {role}'] == selected_red]
 
-    display_boxplot(lol_df, f'{role} Role CS Differential', role)
+    display_boxplot(role_df, f'{role} Role CS Differential', role, 'green')
 
 jungle_df = lol.copy()
 
