@@ -17,23 +17,25 @@ selected_red_mid = st.sidebar.selectbox('Select Red Side Mid Laner', ['Any'] + l
 selected_red_bot = st.sidebar.selectbox('Select Red Side Bot Laner', ['Any'] + list(lol['Red Bot'].unique()))
 
 # Initialize separate DataFrames for each plot
-cs_df = lol.copy()
+top_df = lol.copy()
+mid_df = lol.copy()
+bot_df = lol.copy()
 jungle_df = lol.copy()
 time_df = lol.copy()
 
 # Apply filters for CS Differential plots
 if selected_blue_top != 'Any':
-    cs_df = cs_df[cs_df['Blue Top'] == selected_blue_top]
+    top_df = top_df[top_df['Blue Top'] == selected_blue_top]
 if selected_blue_mid != 'Any':
-    cs_df = cs_df[cs_df['Blue Mid'] == selected_blue_mid]
+    mid_df = mid_df[mid_df['Blue Mid'] == selected_blue_mid]
 if selected_blue_bot != 'Any':
-    cs_df = cs_df[cs_df['Blue Bot'] == selected_blue_bot]
+    bot_df = bot_df[bot_df['Blue Bot'] == selected_blue_bot]
 if selected_red_top != 'Any':
-    cs_df = cs_df[cs_df['Red Top'] == selected_red_top]
+    top_df = top_df[top_df['Red Top'] == selected_red_top]
 if selected_red_mid != 'Any':
-    cs_df = cs_df[cs_df['Red Mid'] == selected_red_mid]
+    mid_df = mid_df[mid_df['Red Mid'] == selected_red_mid]
 if selected_red_bot != 'Any':
-    cs_df = cs_df[cs_df['Red Bot'] == selected_red_bot]
+    bot_df = bot_df[bot_df['Red Bot'] == selected_red_bot]
 
 # Function to create and display a box plot
 def display_boxplot(data, title, role):
@@ -52,13 +54,13 @@ def display_boxplot(data, title, role):
 
 # Display box plots for each role
 st.header('Top Role CS Differential')
-display_boxplot(cs_df, 'Top Role CS Differential', 'Top')
+display_boxplot(top_df, 'Top Role CS Differential', 'Top')
 
 st.header('Mid Role CS Differential')
-display_boxplot(cs_df, 'Mid Role CS Differential', 'Mid')
+display_boxplot(mid_df, 'Mid Role CS Differential', 'Mid')
 
 st.header('Bot Role CS Differential')
-display_boxplot(cs_df, 'Bot Role CS Differential', 'Bot')
+display_boxplot(bot_df, 'Bot Role CS Differential', 'Bot')
 
 selected_blue_jungler = st.sidebar.selectbox('Select Blue Side Jungler', ['Any'] + list(lol['Blue Jungle'].unique()))
 selected_red_jungler = st.sidebar.selectbox('Select Red Side Jungler', ['Any'] + list(lol['Red Jungle'].unique()))
