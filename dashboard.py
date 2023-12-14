@@ -114,6 +114,14 @@ else:
 
 # Function to create and display a scatter plot
 def display_scatter_plot(data, x_variable, y_variable):
+    print("Data sample:", data.head())  # Diagnostic print statement
+    print("X variable:", x_variable)     # Diagnostic print statement
+    print("Y variable:", y_variable)     # Diagnostic print statement
+
+    if data.empty or x_variable not in data.columns or y_variable not in data.columns:
+        st.error(f"No data available or incorrect column names for plotting {x_variable} vs {y_variable}.")
+        return
+
     plt.figure(figsize=(10, 6))
     sns.scatterplot(x=x_variable, y=y_variable, data=data)
     plt.title(f'{x_variable} vs {y_variable}')
