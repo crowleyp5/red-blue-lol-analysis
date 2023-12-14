@@ -17,7 +17,7 @@ lol_df['Mid CS Diff'] = lol_df['Blue Mid CS'] - lol_df['Red Mid CS']
 lol_df['Bot CS Diff'] = lol_df['Blue Bot CS'] - lol_df['Red Bot CS']
 
 # Function to create and display a box plot
-def display_boxplot(data, title, role):
+def display_boxplot(data, title, role, color):
     column_name = f'{role} CS Diff'
 
     if data.empty or column_name not in data.columns:
@@ -25,7 +25,7 @@ def display_boxplot(data, title, role):
         return
 
     plt.figure(figsize=(10, 6))
-    sns.boxplot(data=data, x=column_name, color='green')
+    sns.boxplot(data=data, x=column_name, color=color)
     plt.title(title)
     st.pyplot(plt)
 
