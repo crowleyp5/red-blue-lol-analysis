@@ -37,8 +37,13 @@ if selected_red_bot != 'Any':
 
 # Function to create and display a box plot
 def display_boxplot(data, title, role):
+    column_name = f'{role} CS Diff'
+    if column_name not in data.columns or data.empty:
+        st.write(f"No data available for {title}.")
+        return
+
     plt.figure(figsize=(10, 6))
-    sns.boxplot(data=data, x=f'{role} CS Diff')
+    sns.boxplot(data=data, x=column_name)
     plt.title(title)
     st.pyplot(plt)
 
