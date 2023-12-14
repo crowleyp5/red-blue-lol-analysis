@@ -94,6 +94,18 @@ def display_scatter_plot(data, x_variable, y_variable):
 st.header('Objective Timing vs Game Time')
 display_scatter_plot(time_df, x_axis_variable, 'Game Time')
 
+def display_wards_plot(data, x_col, y_col, title):
+    if data.empty or x_col not in data.columns or y_col not in data.columns:
+        st.error(f"No data available for plotting {title}.")
+        return
+
+    plt.figure(figsize=(10, 6))
+    sns.scatterplot(x=x_col, y=y_col, data=data)
+    plt.xlabel(x_col)
+    plt.ylabel(y_col)
+    plt.title(title)
+    st.pyplot(plt)
+
 ward_df = lol.copy()
 
 # Selection widgets for Blue and Red Support
@@ -110,7 +122,7 @@ if selected_red_support != 'Any':
 
 # Display scatter plots
 st.subheader('Blue Team Ward Analysis')
-display_scatter_plot(ward_df, 'Red Wards Placed', 'Blue Wards Destroyed', 'Blue Team Warding vs Ward Destruction')
+display_wards_plot(ward_df, 'Red Wards Placed', 'Blue Wards Destroyed', 'Blue Team Warding vs Ward Destruction')
 
 st.subheader('Red Team Ward Analysis')
-display_scatter_plot(ward_df, 'Blue Wards Placed', 'Red Wards Destroyed', 'Red Team Warding vs Ward Destruction')
+display_wards_plot(ward_df, 'Blue Wards Placed', 'Red Wards Destroyed', 'Red Team Warding vs Ward Destruction')
