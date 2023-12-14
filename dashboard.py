@@ -37,12 +37,14 @@ if selected_red_mid != 'Any':
 if selected_red_bot != 'Any':
     bot_df = bot_df[bot_df['Red Bot'] == selected_red_bot]
 
+top_df['Top CS Diff'] = top_df['Blue Top CS'] - top_df['Red Top CS']
+mid_df['Mid CS Diff'] = mid_df['Blue Mid CS'] - mid_df['Red Mid CS']
+bot_df['Bot CS Diff'] = bot_df['Blue Bot CS'] - bot_df['Red Bot CS']
+
 # Function to create and display a box plot
 def display_boxplot(data, title, role):
-    # Construct the correct column name based on your DataFrame
-    column_name = f'{role} CS Diff'  # Adjust this to match your DataFrame's actual column name
+    column_name = f'{role} CS Diff'
 
-    # Check if the DataFrame is empty or the column name is not present
     if data.empty or column_name not in data.columns:
         st.error(f"No data available or incorrect column name for plotting {title}.")
         return
