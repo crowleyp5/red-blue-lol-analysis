@@ -63,26 +63,12 @@ for role in ['Top', 'Mid', 'Bot']:
     if selected_red != 'Any':
         role_df = role_df[role_df[f'Red {role}'] == selected_red]
 
-    display_boxplot(role_df, f'{role} Lane CS Differential', role, 'green')
-
-jungle_df = lol.copy()
-
-top_blue_junglers = get_top_champions('Blue Jungle')
-top_red_junglers = get_top_champions('Red Jungle')
-
-selected_blue_jungler = st.selectbox('Select Blue Side Jungler', top_blue_junglers)
-selected_red_jungler = st.selectbox('Select Red Side Jungler', top_red_junglers)
-
-# Apply filters based on user selection
-if selected_blue_jungler != 'Any':
-    jungle_df = jungle_df[jungle_df['Blue Jungle'] == selected_blue_jungler]
-if selected_red_jungler != 'Any':
-    jungle_df = jungle_df[jungle_df['Red Jungle'] == selected_red_jungler]
+    display_boxplot(role_df, f'{role} Lane CS Differential', role, 'darkmagenta')
 
 # Function to create and display a bar chart for the number of dragons
 def display_bar_chart(data, title):
     plt.figure(figsize=(10, 6))
-    sns.barplot(x='Team', y='Dragons', data=data, estimator=sum, ci=None, palette=['blue', 'red'])
+    sns.barplot(x='Team', y='Dragons', data=data, estimator=sum, ci=None, palette=['darkslateblue', 'firebrickred'])
     plt.title(title)
     plt.xlabel('Team')
     plt.ylabel('Total Number of Dragons')
@@ -99,12 +85,22 @@ st.header('Dragon Control Analysis')
 st.write("""
 Junglers are responsible for securing objectives. See which junglers have the easiest time securing dragons relative to their opponents! Similarly to the boxplots, the bar chart will filter according to the champions specified.
 """)
+
+jungle_df = lol.copy()
+
+top_blue_junglers = get_top_champions('Blue Jungle')
+top_red_junglers = get_top_champions('Red Jungle')
+
+selected_blue_jungler = st.selectbox('Select Blue Side Jungler', top_blue_junglers)
+selected_red_jungler = st.selectbox('Select Red Side Jungler', top_red_junglers)
+
+# Apply filters based on user selection
+if selected_blue_jungler != 'Any':
+    jungle_df = jungle_df[jungle_df['Blue Jungle'] == selected_blue_jungler]
+if selected_red_jungler != 'Any':
+    jungle_df = jungle_df[jungle_df['Red Jungle'] == selected_red_jungler]
+
 display_bar_chart(dragon_data, 'Total Number of Dragons Secured by Each Team')
-
-time_df = lol.copy()
-
-# Dropdown for X-Axis Selection
-x_axis_variable = st.selectbox('Select X-Axis Variable', ['First Dragon Time', 'First Rift Herald Time'])
 
 # Function to create and display a scatter plot
 def display_scatter_plot(data, x_variable, y_variable):
@@ -113,7 +109,7 @@ def display_scatter_plot(data, x_variable, y_variable):
         return
 
     plt.figure(figsize=(10, 6))
-    sns.scatterplot(x=x_variable, y=y_variable, data=data, color='green')
+    sns.scatterplot(x=x_variable, y=y_variable, data=data, color='darkmagenta')
     plt.title(f'{x_variable} vs {y_variable}')
     plt.xlabel(x_variable)
     plt.ylabel(y_variable)
@@ -124,6 +120,12 @@ st.header('Objective Timing vs Game Time')
 st.write("""
 Choose an objective (Dragon or Rift Herald). The scatterplot will show how long games last overall relative to the time taken for the first objective to be secured.
 """)
+
+time_df = lol.copy()
+
+# Dropdown for X-Axis Selection
+x_axis_variable = st.selectbox('Select X-Axis Variable', ['First Dragon Time', 'First Rift Herald Time'])
+
 display_scatter_plot(time_df, x_axis_variable, 'Game Time')
 
 def display_wards_plot(data, x_col, y_col, title, color):
@@ -149,18 +151,15 @@ top_red_supports = get_top_champions('Red Support')
 selected_blue_support = st.selectbox('Select Blue Side Support', top_blue_supports, key='blue_support')
 selected_red_support = st.selectbox('Select Red Side Support', top_red_supports, key='red_support')
 
+st.write("""
+Supports tend to be the primary source of vision control. See which supports perform the best compared to their opponents!
+""")
+
 # Apply filters based on user selection
 if selected_blue_support != 'Any':
     ward_df = ward_df[ward_df['Blue Support'] == selected_blue_support]
 if selected_red_support != 'Any':
     ward_df = ward_df[ward_df['Red Support'] == selected_red_support]
 
-# Display scatter plots
-st.subheader('Blue Team Ward Analysis')
-st.write("""
-Supports tend to be the primary source of vision control. See which supports perform the best compared to their opponents!
-""")
-display_wards_plot(ward_df, 'Red Wards Placed', 'Blue Wards Destroyed', 'Blue Team Warding vs Ward Destruction', 'blue')
-
-st.subheader('Red Team Ward Analysis')
-display_wards_plot(ward_df, 'Blue Wards Placed', 'Red Wards Destroyed', 'Red Team Warding vs Ward Destruction', 'red')
+display_wards_plot(ward_df, 'Red Wards Placed', 'Blue Wards Destroyed', 'Blue Team Warding vs Ward Destruction', 'darkslateblue')
+display_wards_plot(ward_df, 'Blue Wards Placed', 'Red Wards Destroyed', 'Red Team Warding vs Ward Destruction', 'firebrickred')
