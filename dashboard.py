@@ -114,19 +114,23 @@ else:
 
 # Function to create and display a scatter plot
 def display_scatter_plot(data, x_variable, y_variable):
-    print("Data sample:", data.head())  # Diagnostic print statement
-    print("X variable:", x_variable)     # Diagnostic print statement
-    print("Y variable:", y_variable)     # Diagnostic print statement
+    # Directly use the column names as they appear in your DataFrame
+    if x_variable == 'First Dragon Time':
+        x_col = 'First Dragon Time'  # Replace with the exact column name from your DataFrame
+    elif x_variable == 'First Rift Herald Time':
+        x_col = 'First Rift Herald Time'  # Replace with the exact column name from your DataFrame
 
-    if data.empty or x_variable not in data.columns or y_variable not in data.columns:
-        st.error(f"No data available or incorrect column names for plotting {x_variable} vs {y_variable}.")
+    y_col = 'Game Time'  # Replace with the exact game time column name from your DataFrame
+
+    if data.empty or x_col not in data.columns or y_col not in data.columns:
+        st.error(f"No data available or incorrect column names for plotting {x_col} vs {y_col}.")
         return
 
     plt.figure(figsize=(10, 6))
-    sns.scatterplot(x=x_variable, y=y_variable, data=data)
-    plt.title(f'{x_variable} vs {y_variable}')
-    plt.xlabel(x_variable)
-    plt.ylabel(y_variable)
+    sns.scatterplot(x=x_col, y=y_col, data=data)
+    plt.title(f'{x_col} vs {y_col}')
+    plt.xlabel(x_col)
+    plt.ylabel(y_col)
     st.pyplot(plt)
 
 # Display scatter plot
