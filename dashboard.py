@@ -93,3 +93,24 @@ def display_scatter_plot(data, x_variable, y_variable):
 # Display scatter plot
 st.header('Objective Timing vs Game Time')
 display_scatter_plot(time_df, x_axis_variable, 'Game Time')
+
+ward_df = lol.copy()
+
+# Selection widgets for Blue and Red Support
+st.header('Ward Analysis')
+
+selected_blue_support = st.selectbox('Select Blue Side Support', ['Any'] + list(ward_df['Blue Support'].unique()), key='blue_support')
+selected_red_support = st.selectbox('Select Red Side Support', ['Any'] + list(ward_df['Red Support'].unique()), key='red_support')
+
+# Apply filters based on user selection
+if selected_blue_support != 'Any':
+    ward_df = ward_df[ward_df['Blue Support'] == selected_blue_support]
+if selected_red_support != 'Any':
+    ward_df = ward_df[ward_df['Red Support'] == selected_red_support]
+
+# Display scatter plots
+st.subheader('Blue Team Ward Analysis')
+display_scatter_plot(ward_df, 'Red Wards Placed', 'Blue Wards Destroyed', 'Blue Team Warding vs Ward Destruction')
+
+st.subheader('Red Team Ward Analysis')
+display_scatter_plot(ward_df, 'Blue Wards Placed', 'Red Wards Destroyed', 'Red Team Warding vs Ward Destruction')
