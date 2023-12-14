@@ -1,4 +1,4 @@
-For each of the feeback steps, I received feedback from Tyler, Orion, and Spencer.
+Feedback received from Spencer was typically received in person. Other comments can be found in the discord server for exact phrasing.
 
 Brainstorming Feedback:
   I brainstormed a few different potential topics for exploratory data analysis. I knew I wanted to pick 
@@ -23,8 +23,16 @@ My related question: How do playstyles differ from red side and blue side?
 Data Collection Blog Post Feedback:
   In regards to my data collection blog post, Orion gave me feedback about the readability of the post. He suggested that I split up my "scraping the data" and "cleaning the data" sections into 2-3 paragraphs each to make it easier to follow along. He also mentioned that it felt a bit weird how I was abruptly stating that I would not have time to explain all the rules of the game due to their complexity, so I had to find a way to more smoothly inform the reader about the game if they are not familiar with it. If you look at my latest version of the post, you will find that the two sections have been split into multiple paragraphs. The first section provides much more details about the game and certain variables that are used in the data set. I believe that the changes were made in a less abrupt manner than the first draft.
   Jacob Fisher asked for more explanation of the game, saying that it was hard to understand what the data meant. Thus, I will have to try my best to draw parallels and explain just enough for people like him to understand without adding significant length to the post. He also said it would be good to provide a link to the site where I got the data for better reproducability. As mentioned before, more details about the game are included in the first section. I described the terms creep score, dragons, turrets, barons, etc. because they are all included in the data set and are mentioned in the cleaning section.
+  Davis added that the post was a bit confusing, and recommended that I incorporate pictures into my blog to aid my explanation of the game and perhaps do some explaining itself.
   See my first draft with the SHA key 059b926ef0653293bb49df3e5a918b609cf904f0 for comparison with the newest version.
 
 Exploratory Data Analysis Feedback:
+  Davis did not say whether he had played the game before, but I assume he has because he said that amateur audiences probably would not understand the analysis I am doing. He recommended that the best thing to do might be to embrace the nicheness of my topic and reorient the post to address people who are more familiar with the game.
+
+See my first draft with the SHA key 95385e5579e45d798ef7a8fdf1733288ee19f23e for comparison with the newest version
 
 Streamlit App Feedback:
+  Davis recommended that I put the select bars in more intuitive places for the user. Apparently, I was not consistent in where I was placing them. He said the app was much more accesible to amateur audiences, and he appreciated that I did not spend much time reiterating what people could already find in the blog post. I implemented his suggestions by putting all the select bars directly of the graph to which they correspond and below the header for that graph.
+  Spencer suggested that I include another graph because there were some variables in my data set that could not be interacted with through the app. I thought this was a valid point, so I added another graph that incorporated the team names and total number of kills so the user could explore a bit more of what the data had to offer.
+  My roommate said that it was fun to play around with the matchups, and he felt that those graphs were a nice addition to the app. He didn't have much critique, but he said that I could maybe use some more interesting colors instead of the basic green, blue, and red I was using. I implemented these changes using colors like dark slate blue and fire brick red.
+  These changes have all been implemented to improve organization, user interactivity, and appeal.
