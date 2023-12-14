@@ -8,27 +8,26 @@ lol = pd.read_csv('loldata_cleaned.csv')
 
 st.title('League of Legends Data Exploration')
 
-# Sidebar for blue role character selection
+# Sidebar for role character selection
 selected_blue_top = st.sidebar.selectbox('Select Blue Side Top Laner', ['Any'] + list(lol['Blue Top'].unique()))
 selected_blue_mid = st.sidebar.selectbox('Select Blue Side Mid Laner', ['Any'] + list(lol['Blue Mid'].unique()))
 selected_blue_bot = st.sidebar.selectbox('Select Blue Side Bot Laner', ['Any'] + list(lol['Blue Bot'].unique()))
-
-# Sidebar for red role character selection
 selected_red_top = st.sidebar.selectbox('Select Red Side Top Laner', ['Any'] + list(lol['Red Top'].unique()))
 selected_red_mid = st.sidebar.selectbox('Select Red Side Mid Laner', ['Any'] + list(lol['Red Mid'].unique()))
 selected_red_bot = st.sidebar.selectbox('Select Red Side Bot Laner', ['Any'] + list(lol['Red Bot'].unique()))
 
-# Initialize filtered DataFrame
-cs_df = lol
+# Initialize separate DataFrames for each plot
+cs_df = lol.copy()
+jungle_df = lol.copy()
+time_df = lol.copy()
 
-# Apply filters dynamically based on user selection
+# Apply filters for CS Differential plots
 if selected_blue_top != 'Any':
     cs_df = cs_df[cs_df['Blue Top'] == selected_blue_top]
 if selected_blue_mid != 'Any':
     cs_df = cs_df[cs_df['Blue Mid'] == selected_blue_mid]
 if selected_blue_bot != 'Any':
     cs_df = cs_df[cs_df['Blue Bot'] == selected_blue_bot]
-
 if selected_red_top != 'Any':
     cs_df = cs_df[cs_df['Red Top'] == selected_red_top]
 if selected_red_mid != 'Any':
@@ -61,15 +60,9 @@ display_boxplot(cs_df, 'Mid Role CS Differential', 'Mid')
 st.header('Bot Role CS Differential')
 display_boxplot(cs_df, 'Bot Role CS Differential', 'Bot')
 
-# Sidebar for jungler selection - Blue Side
 selected_blue_jungler = st.sidebar.selectbox('Select Blue Side Jungler', ['Any'] + list(lol['Blue Jungle'].unique()))
-
-# Sidebar for jungler selection - Red Side
 selected_red_jungler = st.sidebar.selectbox('Select Red Side Jungler', ['Any'] + list(lol['Red Jungle'].unique()))
 
-jungle_df = lol
-
-# Apply filters dynamically based on user selection
 if selected_blue_jungler != 'Any':
     jungle_df = jungle_df[jungle_df['Blue Jungle'] == selected_blue_jungler]
 if selected_red_jungler != 'Any':
@@ -109,7 +102,7 @@ def display_scatter_plot(data, x_variable, y_variable):
     plt.xlabel(x_variable)
     plt.ylabel(y_variable)
     st.pyplot(plt)
-time_df = lol
+
 # Display scatter plot
 st.header('Objective Timing vs Game Time')
 display_scatter_plot(time_df, x_axis_variable, 'Game Time')
