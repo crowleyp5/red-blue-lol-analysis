@@ -43,7 +43,7 @@ for role in ['Top', 'Mid', 'Bot']:
 
     display_boxplot(lol_df, f'{role} Role CS Differential', role)
 
-jungle_df - lol.copy()
+jungle_df = lol.copy()
 
 selected_blue_jungler = st.selectbox('Select Blue Side Jungler', ['Any'] + list(lol['Blue Jungle'].unique()))
 selected_red_jungler = st.selectbox('Select Red Side Jungler', ['Any'] + list(lol['Red Jungle'].unique()))
