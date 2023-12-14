@@ -43,9 +43,10 @@ for role in ['Top', 'Mid', 'Bot']:
 
     display_boxplot(lol_df, f'{role} Role CS Differential', role)
 
+jungle_df - lol.copy()
 
-selected_blue_jungler = st.sidebar.selectbox('Select Blue Side Jungler', ['Any'] + list(lol['Blue Jungle'].unique()))
-selected_red_jungler = st.sidebar.selectbox('Select Red Side Jungler', ['Any'] + list(lol['Red Jungle'].unique()))
+selected_blue_jungler = st.selectbox('Select Blue Side Jungler', ['Any'] + list(lol['Blue Jungle'].unique()))
+selected_red_jungler = st.selectbox('Select Red Side Jungler', ['Any'] + list(lol['Red Jungle'].unique()))
 
 if selected_blue_jungler != 'Any':
     jungle_df = jungle_df[jungle_df['Blue Jungle'] == selected_blue_jungler]
@@ -70,6 +71,8 @@ dragon_data = pd.DataFrame({
 # Display bar chart for the number of dragons
 st.header('Dragon Control Analysis')
 display_bar_chart(dragon_data, 'Total Number of Dragons Secured by Each Team')
+
+time_df = lol.copy()
 
 # Dropdown for X-Axis Selection
 x_axis_variable = st.selectbox('Select X-Axis Variable', ['First Dragon Time', 'First Rift Herald Time'])
