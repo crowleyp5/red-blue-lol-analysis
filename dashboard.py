@@ -25,7 +25,7 @@ def display_boxplot(data, title, role):
         return
 
     plt.figure(figsize=(10, 6))
-    sns.boxplot(data=data, x=column_name)
+    sns.boxplot(data=data, x=column_name, color='green')
     plt.title(title)
     st.pyplot(plt)
 
@@ -56,7 +56,7 @@ if selected_red_jungler != 'Any':
 # Function to create and display a bar chart for the number of dragons
 def display_bar_chart(data, title):
     plt.figure(figsize=(10, 6))
-    sns.barplot(x='Team', y='Dragons', data=data, estimator=sum, ci=None)
+    sns.barplot(x='Team', y='Dragons', data=data, estimator=sum, ci=None, palette=['blue', 'red'])
     plt.title(title)
     plt.xlabel('Team')
     plt.ylabel('Total Number of Dragons')
@@ -84,7 +84,7 @@ def display_scatter_plot(data, x_variable, y_variable):
         return
 
     plt.figure(figsize=(10, 6))
-    sns.scatterplot(x=x_variable, y=y_variable, data=data)
+    sns.scatterplot(x=x_variable, y=y_variable, data=data, color='green')
     plt.title(f'{x_variable} vs {y_variable}')
     plt.xlabel(x_variable)
     plt.ylabel(y_variable)
@@ -94,13 +94,13 @@ def display_scatter_plot(data, x_variable, y_variable):
 st.header('Objective Timing vs Game Time')
 display_scatter_plot(time_df, x_axis_variable, 'Game Time')
 
-def display_wards_plot(data, x_col, y_col, title):
+def display_wards_plot(data, x_col, y_col, title, color):
     if data.empty or x_col not in data.columns or y_col not in data.columns:
         st.error(f"No data available for plotting {title}.")
         return
 
     plt.figure(figsize=(10, 6))
-    sns.scatterplot(x=x_col, y=y_col, data=data)
+    sns.scatterplot(x=x_col, y=y_col, data=data, color=color)
     plt.xlabel(x_col)
     plt.ylabel(y_col)
     plt.title(title)
@@ -122,7 +122,7 @@ if selected_red_support != 'Any':
 
 # Display scatter plots
 st.subheader('Blue Team Ward Analysis')
-display_wards_plot(ward_df, 'Red Wards Placed', 'Blue Wards Destroyed', 'Blue Team Warding vs Ward Destruction')
+display_wards_plot(ward_df, 'Red Wards Placed', 'Blue Wards Destroyed', 'Blue Team Warding vs Ward Destruction', 'blue')
 
 st.subheader('Red Team Ward Analysis')
-display_wards_plot(ward_df, 'Blue Wards Placed', 'Red Wards Destroyed', 'Red Team Warding vs Ward Destruction')
+display_wards_plot(ward_df, 'Blue Wards Placed', 'Red Wards Destroyed', 'Red Team Warding vs Ward Destruction', 'red')
