@@ -8,6 +8,14 @@ lol = pd.read_csv('loldata_cleaned.csv')
 
 st.title('League of Legends Data Exploration')
 
+st.write("""
+Welcome to the League of Legends Data Exploration Dashboard! 
+
+I have an earlier blog post where I conduct some exploratory data analysis on red and blue side playstyles. I recommend you read it if you have not. Rather than reiterating what was already explained in the blog post, I figured it would be more interesting to take advantage of interactive aspects of this dashboard do explore matchups. Many of these metrics are also presented in my blog, but there are too many matchups to cover in a short post. Thus, there is a lot of supplemental information in this dashboard that is not present in my blog.
+
+Have fun exploring!
+""")
+
 # Initialize the DataFrame
 lol_df = lol.copy()
 
@@ -34,7 +42,7 @@ def display_boxplot(data, title, role, color):
 
 # Display box plots and selection widgets for each role
 for role in ['Top', 'Mid', 'Bot']:
-    st.header(f'{role} Role CS Differential')
+    st.header(f'CS Differential in the {role} lane (Blue - Red)')
     role_df = lol.copy()  # Create a copy of the DataFrame for each role
 
     # Calculate CS Differential for the role
@@ -52,7 +60,7 @@ for role in ['Top', 'Mid', 'Bot']:
     if selected_red != 'Any':
         role_df = role_df[role_df[f'Red {role}'] == selected_red]
 
-    display_boxplot(role_df, f'{role} Role CS Differential', role, 'green')
+    display_boxplot(role_df, f'{role} Lane CS Differential', role, 'green')
 
 jungle_df = lol.copy()
 
