@@ -19,22 +19,22 @@ selected_red_mid = st.sidebar.selectbox('Select Red Side Mid Laner', ['Any'] + l
 selected_red_bot = st.sidebar.selectbox('Select Red Side Bot Laner', ['Any'] + list(lol['Red Bot'].unique()))
 
 # Initialize filtered DataFrame
-filtered_df = lol
+cs_df = lol
 
 # Apply filters dynamically based on user selection
 if selected_blue_top != 'Any':
-    filtered_df = filtered_df[filtered_df['Blue Top'] == selected_blue_top]
+    cs_df = cs_df[cs_df['Blue Top'] == selected_blue_top]
 if selected_blue_mid != 'Any':
-    filtered_df = filtered_df[filtered_df['Blue Mid'] == selected_blue_mid]
+    cs_df = cs_df[cs_df['Blue Mid'] == selected_blue_mid]
 if selected_blue_bot != 'Any':
-    filtered_df = filtered_df[filtered_df['Blue Bot'] == selected_blue_bot]
+    cs_df = cs_df[cs_df['Blue Bot'] == selected_blue_bot]
 
 if selected_red_top != 'Any':
-    filtered_df = filtered_df[filtered_df['Red Top'] == selected_red_top]
+    cs_df = cs_df[cs_df['Red Top'] == selected_red_top]
 if selected_red_mid != 'Any':
-    filtered_df = filtered_df[filtered_df['Red Mid'] == selected_red_mid]
+    cs_df = cs_df[cs_df['Red Mid'] == selected_red_mid]
 if selected_red_bot != 'Any':
-    filtered_df = filtered_df[filtered_df['Red Bot'] == selected_red_bot]
+    cs_df = cs_df[cs_df['Red Bot'] == selected_red_bot]
 
 # Function to create and display a box plot
 def display_boxplot(data, title, role):
@@ -53,13 +53,13 @@ def display_boxplot(data, title, role):
 
 # Display box plots for each role
 st.header('Top Role CS Differential')
-display_boxplot(filtered_df, 'Top Role CS Differential', 'Top')
+display_boxplot(cs_df, 'Top Role CS Differential', 'Top')
 
 st.header('Mid Role CS Differential')
-display_boxplot(filtered_df, 'Mid Role CS Differential', 'Mid')
+display_boxplot(cs_df, 'Mid Role CS Differential', 'Mid')
 
 st.header('Bot Role CS Differential')
-display_boxplot(filtered_df, 'Bot Role CS Differential', 'Bot')
+display_boxplot(cs_df, 'Bot Role CS Differential', 'Bot')
 
 # Sidebar for jungler selection - Blue Side
 selected_blue_jungler = st.sidebar.selectbox('Select Blue Side Jungler', ['Any'] + list(lol['Blue Jungle'].unique()))
@@ -67,11 +67,13 @@ selected_blue_jungler = st.sidebar.selectbox('Select Blue Side Jungler', ['Any']
 # Sidebar for jungler selection - Red Side
 selected_red_jungler = st.sidebar.selectbox('Select Red Side Jungler', ['Any'] + list(lol['Red Jungle'].unique()))
 
+jungle_df = lol
+
 # Apply filters dynamically based on user selection
 if selected_blue_jungler != 'Any':
-    filtered_df = filtered_df[filtered_df['Blue Jungle'] == selected_blue_jungler]
+    jungle_df = jungle_df[jungle_df['Blue Jungle'] == selected_blue_jungler]
 if selected_red_jungler != 'Any':
-    filtered_df = filtered_df[filtered_df['Red Jungle'] == selected_red_jungler]
+    jungle_df = jungle_df[jungle_df['Red Jungle'] == selected_red_jungler]
 
 # Function to create and display a bar chart for the number of dragons
 def display_bar_chart(data, title):
@@ -85,7 +87,7 @@ def display_bar_chart(data, title):
 # Preparing data for the bar chart
 dragon_data = pd.DataFrame({
     'Team': ['Blue', 'Red'],
-    'Dragons': [filtered_df['Blue Dragons'].sum(), filtered_df['Red Dragons'].sum()]
+    'Dragons': [jungle_df['Blue Dragons'].sum(), jungle_df['Red Dragons'].sum()]
 })
 
 # Display bar chart for the number of dragons
@@ -107,7 +109,7 @@ def display_scatter_plot(data, x_variable, y_variable):
     plt.xlabel(x_variable)
     plt.ylabel(y_variable)
     st.pyplot(plt)
-
+time_df = lol
 # Display scatter plot
 st.header('Objective Timing vs Game Time')
-display_scatter_plot(filtered_df, x_axis_variable, 'Game Time')
+display_scatter_plot(time_df, x_axis_variable, 'Game Time')
