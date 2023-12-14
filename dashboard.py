@@ -11,7 +11,7 @@ st.title('League of Legends Data Exploration')
 st.write("""
 Welcome to the League of Legends Data Exploration Dashboard! 
 
-I have an earlier [blog post](https://crowleyp5.github.io/crowleyp5blog/2023/12/13/Exploring-Playstyles-Between-Red-and-Blue-Sides-in-League-of-Legends.html) where I conduct some exploratory data analysis on red and blue side playstyles. I recommend you read it if you have not. Rather than reiterating what was already explained in the blog post, I figured it would be more interesting to take advantage of interactive aspects of this dashboard do explore matchups. Many of these metrics are also presented in my blog, but there are too many matchups to cover in a short post. Thus, there is a lot of supplemental information in this dashboard that is not present in my blog.
+I have an earlier [blog post](https://crowleyp5.github.io/crowleyp5blog/2023/12/13/Exploring-Playstyles-Between-Red-and-Blue-Sides-in-League-of-Legends.html) where I conduct some exploratory data analysis on red and blue side playstyles. I recommend you read it if you have not. Rather than reiterating what was already explained in the blog post, I figured it would be more interesting to take advantage of interactive aspects of this dashboard explore matchups. Many of these metrics are also presented in my blog, but there are too many matchups to cover in a short post. Thus, there is a lot of supplemental information in this dashboard that is not present in my blog.
 
 Have fun exploring!
 """)
