@@ -192,6 +192,6 @@ def display_histogram(data, team):
 st.header('Team Kills Analysis')
 st.write('Have a favorite team? See kill distributions for yours!')
 # Team Selection Widget
-selected_team = st.selectbox('Select a Team for Kills Analysis', ['Any'] + teams_to_include)
+selected_team = st.selectbox('Select a Team for Kills Analysis', ['Any'] + teams_to_include, key='unique_team_select')
 
 display_histogram(team_filtered, selected_team)
