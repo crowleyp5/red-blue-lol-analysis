@@ -168,7 +168,7 @@ tournament_filter = lol['Tournament'].str.contains('LCS|LPL|LCK|World|VCS|CBLOL|
 team_filtered = lol[tournament_filter]
 
 # Teams that appear at least 10 times
-team_counts = pd.concat([lol_filtered['Blue Team'], team_filtered['Red Team']]).value_counts()
+team_counts = pd.concat([team_filtered['Blue Team'], team_filtered['Red Team']]).value_counts()
 teams_to_include = team_counts[team_counts >= 10].index.tolist()
 
 # Team Selection Widget
