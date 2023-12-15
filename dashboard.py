@@ -68,7 +68,7 @@ for role in ['Top', 'Mid', 'Bot']:
 # Function to create and display a bar chart for the number of dragons
 def display_bar_chart(data, title):
     plt.figure(figsize=(10, 6))
-    sns.barplot(x='Team', y='Dragons', data=data, estimator=sum, ci=None, palette=['darkslateblue', 'firebrickred'])
+    sns.barplot(x='Team', y='Dragons', data=data, estimator=sum, ci=None, palette=['darkslateblue', 'firebrick'])
     plt.title(title)
     plt.xlabel('Team')
     plt.ylabel('Total Number of Dragons')
@@ -162,7 +162,7 @@ if selected_red_support != 'Any':
     ward_df = ward_df[ward_df['Red Support'] == selected_red_support]
 
 display_wards_plot(ward_df, 'Red Wards Placed', 'Blue Wards Destroyed', 'Blue Team Warding vs Ward Destruction', 'darkslateblue')
-display_wards_plot(ward_df, 'Blue Wards Placed', 'Red Wards Destroyed', 'Red Team Warding vs Ward Destruction', 'firebrickred')
+display_wards_plot(ward_df, 'Blue Wards Placed', 'Red Wards Destroyed', 'Red Team Warding vs Ward Destruction', 'firebrick')
 
 tournament_filter = lol['Tournament Name'].str.contains('LCS|LPL|LCK|World|VCS|CBLOL|LJL|LEC|LLA')
 team_filtered = lol[tournament_filter]
@@ -182,7 +182,7 @@ def display_histogram(data, team):
     kills_data = data[['Blue Kills', 'Red Kills']].stack().reset_index(drop=True)
     
     plt.figure(figsize=(10, 6))
-    sns.histplot(kills_data, bins=20, kde=False, color='darkcyan')
+    sns.histplot(kills_data, bins=20, kde=False, color='darkmagenta')
     plt.title(f'Number of Kills Distribution for {team}' if team != 'Any' else 'Number of Kills Distribution')
     plt.xlabel('Number of Kills')
     plt.ylabel('Frequency')
