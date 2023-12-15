@@ -74,12 +74,6 @@ def display_bar_chart(data, title):
     plt.ylabel('Total Number of Dragons')
     st.pyplot(plt)
 
-# Preparing data for the bar chart
-dragon_data = pd.DataFrame({
-    'Team': ['Blue', 'Red'],
-    'Dragons': [jungle_df['Blue Dragons'].sum(), jungle_df['Red Dragons'].sum()]
-})
-
 # Display bar chart for the number of dragons
 st.header('Dragon Control Analysis')
 st.write("""
@@ -87,6 +81,12 @@ Junglers are responsible for securing objectives. See which junglers have the ea
 """)
 
 jungle_df = lol.copy()
+
+# Preparing data for the bar chart
+dragon_data = pd.DataFrame({
+    'Team': ['Blue', 'Red'],
+    'Dragons': [jungle_df['Blue Dragons'].sum(), jungle_df['Red Dragons'].sum()]
+})
 
 top_blue_junglers = get_top_champions('Blue Jungle')
 top_red_junglers = get_top_champions('Red Jungle')
