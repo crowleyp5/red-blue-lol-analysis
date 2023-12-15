@@ -164,7 +164,7 @@ if selected_red_support != 'Any':
 display_wards_plot(ward_df, 'Red Wards Placed', 'Blue Wards Destroyed', 'Blue Team Warding vs Ward Destruction', 'darkslateblue')
 display_wards_plot(ward_df, 'Blue Wards Placed', 'Red Wards Destroyed', 'Red Team Warding vs Ward Destruction', 'firebrick')
 
-tournament_filter = lol['Tournament Name'].str.contains('LCS|LPL|LCK|World|VCS|CBLOL|LJL|LEC|LLA')
+tournament_filter = lol['Tournament'].str.contains('LCS|LPL|LCK|World|VCS|CBLOL|LJL|LEC|LLA')
 team_filtered = lol[tournament_filter]
 
 # Teams that appear at least 10 times
