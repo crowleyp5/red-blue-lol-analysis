@@ -163,3 +163,35 @@ if selected_red_support != 'Any':
 
 display_wards_plot(ward_df, 'Red Wards Placed', 'Blue Wards Destroyed', 'Blue Team Warding vs Ward Destruction', 'darkslateblue')
 display_wards_plot(ward_df, 'Blue Wards Placed', 'Red Wards Destroyed', 'Red Team Warding vs Ward Destruction', 'firebrickred')
+
+tournament_filter = lol['Tournament Name'].str.contains('LCS|LPL|LCK|World|VCS|CBLOL|LJL|LEC|LLA')
+team_filtered = lol[tournament_filter]
+
+# Teams that appear at least 10 times
+team_counts = pd.concat([lol_filtered['Blue Team'], team_filtered['Red Team']]).value_counts()
+teams_to_include = team_counts[team_counts >= 10].index.tolist()
+
+# Team Selection Widget
+selected_team = st.selectbox('Select a Team for Kills Analysis', ['Any'] + teams_to_include)
+
+# Function to create and display a histogram
+def display_histogram(data, team):
+    if team != 'Any':
+        data = data[(data['Blue Team'] == team) | (data['Red Team'] == team)]
+
+    kills_data = data[['Blue Kills', 'Red Kills']].stack().reset_index(drop=True)
+    
+    plt.figure(figsize=(10, 6))
+    sns.histplot(kills_data, bins=20, kde=False, color='darkcyan')
+    plt.title(f'Number of Kills Distribution for {team}' if team != 'Any' else 'Number of Kills Distribution')
+    plt.xlabel('Number of Kills')
+    plt.ylabel('Frequency')
+    st.pyplot(plt)
+
+# Display the histogram
+st.header('Team Kills Analysis')
+st.write('Have a favorite team? See kill distributions for yours!')
+# Team Selection Widget
+selected_team = st.selectbox('Select a Team for Kills Analysis', ['Any'] + teams_to_include)
+
+display_histogram(team_filtered, selected_team)
